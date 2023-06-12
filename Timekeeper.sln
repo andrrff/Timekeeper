@@ -1,0 +1,41 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{81B3512A-8FFD-41C3-8EB2-3EEAF29D5490}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Timekeeper.Domain", "src\Timekeeper.Domain\Timekeeper.Domain.csproj", "{7F5A6F28-46F9-482C-8FCF-CDC872C69EB7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Timekeeper.Application", "src\Timekeeper.Application\Timekeeper.Application.csproj", "{EE5E9B63-7858-495E-9B74-5D804893DA7B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Timekeeper.Infrastructure", "src\Timekeeper.Infrastructure\Timekeeper.Infrastructure.csproj", "{68D4B219-B7C3-4E4F-B714-ACCAFFA7FEF6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7F5A6F28-46F9-482C-8FCF-CDC872C69EB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F5A6F28-46F9-482C-8FCF-CDC872C69EB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F5A6F28-46F9-482C-8FCF-CDC872C69EB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F5A6F28-46F9-482C-8FCF-CDC872C69EB7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE5E9B63-7858-495E-9B74-5D804893DA7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE5E9B63-7858-495E-9B74-5D804893DA7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE5E9B63-7858-495E-9B74-5D804893DA7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE5E9B63-7858-495E-9B74-5D804893DA7B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68D4B219-B7C3-4E4F-B714-ACCAFFA7FEF6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68D4B219-B7C3-4E4F-B714-ACCAFFA7FEF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68D4B219-B7C3-4E4F-B714-ACCAFFA7FEF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68D4B219-B7C3-4E4F-B714-ACCAFFA7FEF6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{7F5A6F28-46F9-482C-8FCF-CDC872C69EB7} = {81B3512A-8FFD-41C3-8EB2-3EEAF29D5490}
+		{EE5E9B63-7858-495E-9B74-5D804893DA7B} = {81B3512A-8FFD-41C3-8EB2-3EEAF29D5490}
+		{68D4B219-B7C3-4E4F-B714-ACCAFFA7FEF6} = {81B3512A-8FFD-41C3-8EB2-3EEAF29D5490}
+	EndGlobalSection
+EndGlobal
