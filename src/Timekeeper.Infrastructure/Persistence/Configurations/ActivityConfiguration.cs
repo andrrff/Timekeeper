@@ -17,7 +17,7 @@ public class ActivityConfiguration : IEntityTypeConfiguration<Activity>
             .HasAnnotation("ValidationMessage", "Note must not exceed 200 characters.");
 
         builder.HasOne(a => a.Timesheet)
-            .WithMany(t => t.Activity)
+            .WithMany(t => t.Activities)
             .HasForeignKey(a => a.TimesheetId)
             .OnDelete(DeleteBehavior.Cascade);
 

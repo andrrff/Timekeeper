@@ -11,6 +11,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Timekeeper.Application", "s
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Timekeeper.Infrastructure", "src\Timekeeper.Infrastructure\Timekeeper.Infrastructure.csproj", "{68D4B219-B7C3-4E4F-B714-ACCAFFA7FEF6}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{B32C40E3-6650-48A5-8D18-CD496D05C9B6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Timekeeper.Application.UnitTests", "tests\Timekeeper.Application.UnitTests\Timekeeper.Application.UnitTests.csproj", "{4AA64FF7-F282-4AE7-B1FC-2D91A129B75E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Timekeeper.CLI", "src\Timekeeper.CLI\Timekeeper.CLI.csproj", "{27D68C17-3A98-4EFB-B478-D683A5610721}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,10 +38,20 @@ Global
 		{68D4B219-B7C3-4E4F-B714-ACCAFFA7FEF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{68D4B219-B7C3-4E4F-B714-ACCAFFA7FEF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{68D4B219-B7C3-4E4F-B714-ACCAFFA7FEF6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4AA64FF7-F282-4AE7-B1FC-2D91A129B75E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4AA64FF7-F282-4AE7-B1FC-2D91A129B75E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4AA64FF7-F282-4AE7-B1FC-2D91A129B75E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4AA64FF7-F282-4AE7-B1FC-2D91A129B75E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{27D68C17-3A98-4EFB-B478-D683A5610721}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27D68C17-3A98-4EFB-B478-D683A5610721}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27D68C17-3A98-4EFB-B478-D683A5610721}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27D68C17-3A98-4EFB-B478-D683A5610721}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{7F5A6F28-46F9-482C-8FCF-CDC872C69EB7} = {81B3512A-8FFD-41C3-8EB2-3EEAF29D5490}
 		{EE5E9B63-7858-495E-9B74-5D804893DA7B} = {81B3512A-8FFD-41C3-8EB2-3EEAF29D5490}
 		{68D4B219-B7C3-4E4F-B714-ACCAFFA7FEF6} = {81B3512A-8FFD-41C3-8EB2-3EEAF29D5490}
+		{4AA64FF7-F282-4AE7-B1FC-2D91A129B75E} = {B32C40E3-6650-48A5-8D18-CD496D05C9B6}
+		{27D68C17-3A98-4EFB-B478-D683A5610721} = {81B3512A-8FFD-41C3-8EB2-3EEAF29D5490}
 	EndGlobalSection
 EndGlobal

@@ -6,16 +6,16 @@ using Timekeeper.Application.Common.Interfaces;
 
 namespace Timekeeper.Application.Timesheets.Commands.CreateActivity;
 
-public class CreateActivityCommand : IRequest<int>
+public class CreateActivityCommand : IRequest<Guid>
 {
-    public int TimesheetId { get; set; }
+    public Guid TimesheetId { get; set; }
 
     public string? Note { get; set; }
 
-    public TaskItem TaskItem { get; set; } = default!;
+    public TaskItem TaskItem { get; set; } = null!;
 }
 
-public class CreateActivityCommandHandler : IRequestHandler<CreateActivityCommand, int>
+public class CreateActivityCommandHandler : IRequestHandler<CreateActivityCommand, Guid>
 {
     private readonly IApplicationDbContext _context;
 
@@ -24,7 +24,7 @@ public class CreateActivityCommandHandler : IRequestHandler<CreateActivityComman
         _context = context;
     }
 
-    public async Task<int> Handle(CreateActivityCommand request, CancellationToken cancellationToken)
+    public async Task<Guid> Handle(CreateActivityCommand request, CancellationToken cancellationToken)
     {
         var entity = new Activity
         {
@@ -42,4 +42,3 @@ public class CreateActivityCommandHandler : IRequestHandler<CreateActivityComman
         return entity.TimesheetId;
     }
 }
-

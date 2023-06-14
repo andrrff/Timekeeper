@@ -24,10 +24,8 @@ public class TaskItem : ValueObject
     public DateTime? StartDate { get; private set; }
 
     public DateTime? DueDate { get; private set; }
-    
-    public IEnumerable<string>? Tags { get; private set; }
 
-    public TaskItem(string id, string title, string link, OriginType origin, TaskType type, int timeToBeSpent, int timeSpent, DateTime? startDate, DateTime? dueDate, string? description = null, IEnumerable<string>? tags = null)
+    public TaskItem(string id, string title, string link, OriginType origin, TaskType type, int timeToBeSpent, int timeSpent, DateTime? startDate, DateTime? dueDate, string? description = null)
     {
         Id             = id;
         Title          = title;
@@ -39,7 +37,6 @@ public class TaskItem : ValueObject
         StartDate      = startDate;
         DueDate        = dueDate;
         Description    = description;
-        Tags           = tags;
     }
 
     protected override IEnumerable<object> GetEqualityComponents()
@@ -60,8 +57,5 @@ public class TaskItem : ValueObject
 
         if (Description is not null)
             yield return Description;
-
-        if (Tags is not null)
-            yield return Tags;
     }
 }

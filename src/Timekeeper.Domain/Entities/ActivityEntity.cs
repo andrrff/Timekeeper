@@ -5,11 +5,11 @@ namespace Timekeeper.Domain.Entities;
 
 public class Activity : BaseAuditableEntity
 {
-    public int TimesheetId { get; set; }
+    public Guid TimesheetId { get; set; }
 
     public string? Note { get; set; }
 
-    public TaskItem TaskItem { get; set; } = default!;
+    public TaskItem? TaskItem { get; set; } = default!;
 
     public Timesheet Timesheet { get; set; } = default!;
 }

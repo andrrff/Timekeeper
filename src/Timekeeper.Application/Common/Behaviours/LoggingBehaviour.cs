@@ -30,7 +30,5 @@ public class LoggingBehaviour<TRequest> : IRequestPreProcessor<TRequest> where T
 
         _logger.LogInformation("Timekeeper Request: {Name} {@UserId} {@UserName} {@Request}",
             requestName, userId, userName, request);
-
-
     }
 }

@@ -10,5 +10,5 @@ public class Timesheet : BaseAuditableEntity
 
     public int TotalHours { get; set; }
 
-    public IEnumerable<Activity> Activity { get; set; } = new List<Activity>();
+    public ICollection<Activity> Activities { get; set; } = new List<Activity>();
 }

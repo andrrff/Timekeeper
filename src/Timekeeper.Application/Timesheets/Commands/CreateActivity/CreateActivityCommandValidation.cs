@@ -13,9 +13,8 @@ public class CreateActivityCommandValidation : AbstractValidator<CreateActivityC
     {
         _context = context;
 
-        RuleFor(v => v.TimesheetId)
-            .NotEmpty().WithMessage("TimesheetId is required.")
-            .MustAsync(TimesheetExists).WithMessage("The specified timesheet does not exist.");
+        // RuleFor(v => v.TimesheetId)
+        //     .NotEmpty().WithMessage("TimesheetId is required.");
 
         RuleFor(v => v.Note)
             .MaximumLength(200).WithMessage("Note must not exceed 200 characters.");
@@ -25,8 +24,7 @@ public class CreateActivityCommandValidation : AbstractValidator<CreateActivityC
 
         RuleFor(v => v.TaskItem.Id)
             .NotEmpty().WithMessage("TaskItem.Id is required.")
-            .MaximumLength(20).WithMessage("TaskItem.Id must not exceed 20 characters.")
-            .MustAsync(BeUniqueTask).WithMessage("The specified TaskItem.Id already exists.");
+            .MaximumLength(20).WithMessage("TaskItem.Id must not exceed 20 characters.");
 
         RuleFor(v => v.TaskItem.Title)
             .NotEmpty().WithMessage("Title is required.");
@@ -56,16 +54,5 @@ public class CreateActivityCommandValidation : AbstractValidator<CreateActivityC
         RuleFor(v => v.TaskItem.DueDate)
             .NullOrMustBeValidDate().GreaterThan(v => v.TaskItem.StartDate).When(v => v.TaskItem.StartDate.HasValue)
             .WithMessage("DueDate must be greater than StartDate.");
-    }
-
-    public async Task<bool> BeUniqueTask(string taskId, CancellationToken cancellationToken)
-    {
-        return await _context.Activities
-            .AllAsync(l => l.TaskItem.Id != taskId);
-    }
-
-    public async Task<bool> TimesheetExists(int timesheetId, CancellationToken cancellationToken)
-    {
-        return await _context.Timesheets.FindAsync(timesheetId) != null;
     }
 }

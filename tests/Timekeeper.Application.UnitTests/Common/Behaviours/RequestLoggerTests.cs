@@ -31,7 +31,7 @@ public class RequestLoggerTests
 
         await requestLogger.Process(new CreateActivityCommand 
         { 
-            TimesheetId = 1,
+            TimesheetId = new Guid(),
             TaskItem    = new TaskItem("MC2-1010", "title", "link.com", OriginType.Jira, TaskType.Development, 40, 32, DateTime.Now, DateTime.Now),
             Note        = "note"
         }, new CancellationToken());
@@ -46,7 +46,7 @@ public class RequestLoggerTests
 
         await requestLogger.Process(new CreateActivityCommand
         {
-            TimesheetId = 1,
+            TimesheetId = new Guid(),
             TaskItem    = new TaskItem("MC2-1010", "title", "link.com", OriginType.Jira, TaskType.Development, 40, 32, DateTime.Now, DateTime.Now),
             Note        = "note"
         }, new CancellationToken());

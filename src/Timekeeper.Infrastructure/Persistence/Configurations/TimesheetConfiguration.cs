@@ -20,7 +20,7 @@ public class TimesheetConfiguration : IEntityTypeConfiguration<Timesheet>
             .IsRequired()
             .HasAnnotation("ValidationMessage", "TotalHours is required.");
 
-        builder.HasMany(t => t.Activity)
+        builder.HasMany(t => t.Activities)
             .WithOne(a => a.Timesheet)
             .HasForeignKey(a => a.TimesheetId)
             .OnDelete(DeleteBehavior.Cascade);
