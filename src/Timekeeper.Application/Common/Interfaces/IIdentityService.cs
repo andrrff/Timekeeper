@@ -4,6 +4,8 @@ namespace Timekeeper.Application.Common.Interfaces;
 
 public interface IIdentityService
 {
+    Task<(Result Result, string UserId)> AuthenticateAsync(string userName, string password);
+
     Task<string?> GetUserNameAsync(string userId);
 
     Task<bool> IsInRoleAsync(string userId, string role);

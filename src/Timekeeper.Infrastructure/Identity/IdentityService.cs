@@ -21,6 +21,20 @@ public class IdentityService : IIdentityService
         _authorizationService       = authorizationService;
     }
 
+    public async Task<(Result Result, string UserId)> AuthenticateAsync(string userName, string password)
+    {
+        var user = await _userManager.FindByNameAsync(userName);
+
+        if (user is null)
+        {
+            return (Result.Failure(new[] { "User does not exist." }), string.Empty);
+        }
+
+        var result = await _userManager.CheckPasswordAsync(user, password);
+
+        return result ? (Result.Success(), user.Id) : (Result.Failure(new[] { "Invalid password." }), string.Empty);
+    }
+
     public async Task<string?> GetUserNameAsync(string userId)
     {
         var user = await _userManager.Users.FirstAsync(u => u.Id == userId);

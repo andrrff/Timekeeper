@@ -16,7 +16,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.1" />
-    <PackageReference Include="Spectre.Console" Version="0.47.0" />
+    <PackageReference Include="Spectre.Console.Cli" Version="0.47.0" />
     <PackageReference Include="ZymLabs.NSwag.FluentValidation" Version="0.6.2" />
   </ItemGroup>
 

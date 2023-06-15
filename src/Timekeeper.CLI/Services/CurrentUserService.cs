@@ -14,26 +14,31 @@ public class CurrentUserService : ICurrentUserService
 
     private string CurrentId { get; set; } = string.Empty;
 
-    public string? UserId
+    public void Register(string userName, string password)
     {
-        get
-        {
-            var identityService = _serviceProvider.GetRequiredService<IIdentityService>();
+        var identityService = _serviceProvider.GetRequiredService<IIdentityService>();
 
-            if (string.IsNullOrEmpty(CurrentId))
-            {
-                CurrentId = identityService.CreateUserAsync("andrecastanhal@gmail.com", "@Andrrff17112001").Result.UserId;
-                return CurrentId;
-            }
-
-            var username = identityService.GetUserNameAsync(CurrentId).Result ?? string.Empty;
-
-            if (string.IsNullOrEmpty(username))
-            {
-                CurrentId = identityService.CreateUserAsync("andrecastanhal@gmail.com", "@Andrrff17112001").Result.UserId;
-            }
-
-            return CurrentId;
-        }
+        CurrentId = identityService.CreateUserAsync(userName, password).Result.UserId;
     }
+
+    public string Login(string userName, string password)
+    {
+        var identityService = _serviceProvider.GetRequiredService<IIdentityService>();
+
+        CurrentId = identityService.AuthenticateAsync(userName, password).Result.UserId;
+
+        return CurrentId;
+    }
+
+    public void Logout()
+    {
+        CurrentId = string.Empty;
+    }
+
+    public void SetUserId(string userId)
+    {
+        CurrentId = userId;
+    }
+
+    public string? UserId => CurrentId;
 }
