@@ -6,7 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 namespace Timekeeper.CLI.Commands.Login;
 
 [Description("Login to the application.")]
-public sealed class LoginCommand : Command<LoginCommand.Settings>
+public sealed class RegisterCommand : Command<RegisterCommand.Settings>
 {
     private readonly IServiceProvider _serviceProvider;
     private readonly ICurrentUserService _currentUserService;
@@ -24,24 +24,24 @@ public sealed class LoginCommand : Command<LoginCommand.Settings>
         public string Password { get; set; } = string.Empty;
     }
 
-    public LoginCommand(IServiceProvider serviceProvider, ICurrentUserService currentUserService)
+    public RegisterCommand(IServiceProvider serviceProvider, ICurrentUserService currentUserService)
     {
-        _serviceProvider    = serviceProvider;
+        _serviceProvider = serviceProvider;
         _currentUserService = currentUserService;
     }
 
-    public string Login(string userName, string password)
+    public string Register(string userName, string password)
     {
         var identityService = _serviceProvider.GetRequiredService<IIdentityService>();
-        _currentUserService.SetUserId(identityService.AuthenticateAsync(userName, password).Result.UserId);
+        _currentUserService.SetUserId(identityService.CreateUserAsync(userName, password).Result.UserId);
 
         return _currentUserService.UserId ?? string.Empty;
     }
 
     public override int Execute(CommandContext context, Settings settings)
     {
-        System.Console.WriteLine($"Welcome, {settings.UserName}");
-        System.Console.WriteLine($"UserId: {Login(settings.UserName, settings.Password)}");
+        System.Console.WriteLine($"Login with, {settings.UserName}");
+        System.Console.WriteLine($"UserId: {Register(settings.UserName, settings.Password)}");
 
         return 0;
     }

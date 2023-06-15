@@ -24,6 +24,7 @@ public class Program
         {
             config.SetApplicationName("Timekeeper.CLI");
             config.AddCommand<LoginCommand>("login");
+            config.AddCommand<RegisterCommand>("register");
         });
 
         await appCli.RunAsync(args);
