@@ -44,7 +44,7 @@ public class ApplicationDbContext : ApiAuthorizationDbContext<ApplicationUser>, 
 
     public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
     {
-        await _mediator.DispatchDomainEventsAsync(this);
+        await _mediator.DispatchDomainEventsAsync(this, cancellationToken);
 
         return await base.SaveChangesAsync(cancellationToken);
     }

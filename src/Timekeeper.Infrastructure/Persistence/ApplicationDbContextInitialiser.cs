@@ -24,7 +24,7 @@ public class ApplicationDbContextInitialiser
     {
         try
         {
-            if (_context.Database.IsSqlServer())
+            if (_context.Database.IsSqlServer() || _context.Database.IsSqlite())
             {
                 await _context.Database.MigrateAsync();
             }
