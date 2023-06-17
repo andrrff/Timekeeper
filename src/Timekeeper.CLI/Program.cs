@@ -2,8 +2,10 @@
 using Timekeeper.CLI.Services;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Timekeeper.CLI.Commands.Jira;
 using Timekeeper.CLI.Commands.Login;
 using ZymLabs.NSwag.FluentValidation;
+using Timekeeper.CLI.Commands.Register;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Timekeeper.Application.Common.Interfaces;
@@ -25,6 +27,7 @@ public class Program
             config.SetApplicationName("Timekeeper.CLI");
             config.AddCommand<LoginCommand>("login");
             config.AddCommand<RegisterCommand>("register");
+            config.AddCommand<JiraCommand>("jira");
         });
 
         await appCli.RunAsync(args);

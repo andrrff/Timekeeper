@@ -3,7 +3,7 @@ using System.ComponentModel;
 using Timekeeper.Application.Common.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Timekeeper.CLI.Commands.Login;
+namespace Timekeeper.CLI.Commands.Register;
 
 [Description("Login to the application.")]
 public sealed class RegisterCommand : Command<RegisterCommand.Settings>
