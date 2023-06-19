@@ -19,7 +19,7 @@ public sealed class JiraCommand : Command<JiraCommand.Settings>
         [DefaultValue("atendimentorci@nexergroup.com")]
         public string UserName { get; set; } = string.Empty;
 
-        [CommandOption("-k|--api-key <PASSWORD>")]
+        [CommandOption("-k|--api-key <KEY>")]
         [Description("API Key to basic auth.")]
         [DefaultValue("ATATT3xFfGF0adpgDI2XoU2L2v4ABTyi26d6pI4APYEXWCV4e67ds84Lwicfs4xaPj-LzoDnmXI4QseOvbfU8LK8yVnvWRQALooYjDNGic-VZuz7-DYJP8mVvWSzUO2EKZjCexfkA7jyLCMvA_U7RKwa76hF4YyixK9te9hrSfHFvgabMQN45Go=1E2BE929")]
         public string ApiKey { get; set; } = string.Empty;

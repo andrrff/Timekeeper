@@ -6,6 +6,7 @@ using Timekeeper.CLI.Commands.Jira;
 using Timekeeper.CLI.Commands.Login;
 using ZymLabs.NSwag.FluentValidation;
 using Timekeeper.CLI.Commands.Register;
+using Timekeeper.CLI.Commands.AzDevOps;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Timekeeper.Application.Common.Interfaces;
@@ -28,6 +29,7 @@ public class Program
             config.AddCommand<LoginCommand>("login");
             config.AddCommand<RegisterCommand>("register");
             config.AddCommand<JiraCommand>("jira");
+            config.AddCommand<AzDevOpsCommand>("azdevops");
         });
 
         await appCli.RunAsync(args);
