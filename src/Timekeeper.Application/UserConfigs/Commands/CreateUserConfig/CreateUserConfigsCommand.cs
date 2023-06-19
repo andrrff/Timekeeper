@@ -6,7 +6,7 @@ using Timekeeper.Application.Common.Interfaces;
 
 namespace Timekeeper.Application.UserConfigs.Commands.CreateUserConfig;
 
-public class CreateUserConfigsCommand : IRequest
+public record CreateUserConfigsCommand : IRequest
 {
     public JiraParameters? JiraParameters { get; set; }
     
