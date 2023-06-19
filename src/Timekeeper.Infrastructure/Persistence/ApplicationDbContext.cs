@@ -27,6 +27,7 @@ public class ApplicationDbContext : ApiAuthorizationDbContext<ApplicationUser>, 
 
     public DbSet<Activity> Activities => Set<Activity>();
     public DbSet<Timesheet> Timesheets => Set<Timesheet>();
+    public DbSet<UserConfigs> UserConfigs => Set<UserConfigs>();
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
