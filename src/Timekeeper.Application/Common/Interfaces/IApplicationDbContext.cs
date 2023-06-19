@@ -9,5 +9,7 @@ public interface IApplicationDbContext
 
     DbSet<Timesheet> Timesheets { get; }
 
+    DbSet<UserConfig> UserConfigs { get; }
+
     Task<int> SaveChangesAsync(CancellationToken cancellationToken);
 }

@@ -1,6 +1,8 @@
 using MediatR;
-using Timekeeper.Application.Common.Interfaces;
+using Timekeeper.Domain.Entities;
+using Timekeeper.Domain.Events.UserConfigs;
 using Timekeeper.Domain.ValueObjects.Configs;
+using Timekeeper.Application.Common.Interfaces;
 
 namespace Timekeeper.Application.UserConfigs.Commands.CreateUserConfig;
 
@@ -22,11 +24,13 @@ public class CreateUserConfigsCommandHandler : IRequestHandler<CreateUserConfigs
 
     public async Task Handle(CreateUserConfigsCommand request, CancellationToken cancellationToken)
     {
-        var entity = new UserConfigs
+        var entity = new UserConfig
         {
-            JiraParameters    = request.JiraParameters,
+            JiraParameters     = request.JiraParameters,
             AzDevOpsParameters = request.AzDevOpsParameters
         };
+
+        entity.AddDomainEvent(new UserConfigCreatedEvent(entity));
 
         _context.UserConfigs.Add(entity);
 

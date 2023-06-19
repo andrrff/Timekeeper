@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Timekeeper.Infrastructure.Persistence.Configurations;
 
-public class UserConfigConfiguration : IEntityTypeConfiguration<UserConfigs>
+public class UserConfigConfiguration : IEntityTypeConfiguration<UserConfig>
 {
-    public void Configure(EntityTypeBuilder<UserConfigs> builder)
+    public void Configure(EntityTypeBuilder<UserConfig> builder)
     {
         builder.Property(uc => uc.JiraParameters)
             .HasAnnotation("ValidationMessage", "JiraParameters is required.");

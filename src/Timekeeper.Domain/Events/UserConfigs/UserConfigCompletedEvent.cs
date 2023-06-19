@@ -1,13 +1,14 @@
 using Timekeeper.Domain.Common;
+using Timekeeper.Domain.Entities;
 
 namespace Timekeeper.Domain.Events.UserConfigs;
 
 public class UserConfigCompletedEvent : BaseEvent
 {
-    public UserConfigCompletedEvent(UserConfigs userConfigs)
+    public UserConfigCompletedEvent(UserConfig userConfig)
     {
-        UserConfigs = userConfigs;
+        UserConfig = userConfig;
     }
 
-    public UserConfigs UserConfigs { get; }
+    public UserConfig UserConfig { get; }
 }
