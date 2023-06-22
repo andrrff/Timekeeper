@@ -1,5 +1,6 @@
 using Spectre.Console.Cli;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using Timekeeper.Application.Common.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -38,7 +39,7 @@ public sealed class RegisterCommand : Command<RegisterCommand.Settings>
         return _currentUserService.UserId ?? string.Empty;
     }
 
-    public override int Execute(CommandContext context, Settings settings)
+    public override int Execute([NotNull] CommandContext context, [NotNull] Settings settings)
     {
         System.Console.WriteLine($"Login with, {settings.UserName}");
         System.Console.WriteLine($"UserId: {Register(settings.UserName, settings.Password)}");

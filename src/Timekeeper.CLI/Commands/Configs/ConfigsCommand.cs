@@ -2,17 +2,18 @@ using MediatR;
 using Spectre.Console.Cli;
 using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
+using Timekeeper.Domain.ValueObjects.Configs;
 using Microsoft.Extensions.DependencyInjection;
-using Timekeeper.Infrastructure.ExternalServices.AzDevOps;
+using Timekeeper.Application.UserConfigs.Commands.CreateUserConfig;
 
-namespace Timekeeper.CLI.Commands.AzDevOps;
+namespace Timekeeper.CLI.Commands.Configs;
 
 [Description("AzDevOps commands.")]
-public sealed class AzDevOpsCommand : Command<AzDevOpsCommand.Settings>
+public sealed class ConfigsCommand : Command<ConfigsCommand.Settings>
 {
     private readonly ISender? _mediator;
     private readonly IServiceProvider _serviceProvider;
-    
+
     public class Settings : CommandSettings
     {
         [CommandOption("-k|--api-key <KEY>")]
@@ -34,45 +35,20 @@ public sealed class AzDevOpsCommand : Command<AzDevOpsCommand.Settings>
         [Description("https://dev.azure.com/[Organization]/[Project]/_git/[Repository]/")]
         [DefaultValue("Loopster - Azure Functions")]
         public string Repository { get; set; } = string.Empty;
-
-        [CommandOption("-v|--value <VALUE>")]
-        [Description("Value to use in query for endpoint from API Jira.")]
-        [DefaultValue("3685")]
-        public string Value { get; set; } = string.Empty;
     }
 
-    public AzDevOpsCommand(IServiceProvider serviceProvider)
+    public ConfigsCommand(IServiceProvider serviceProvider)
     {
         _serviceProvider = serviceProvider;
         _mediator        = _serviceProvider.GetService<ISender>();
     }
 
-    public static async Task GetWorkItemAsync(string instance, string project, string apiKey, string value)
-    {
-        var azDevOpsClient = new AzDevOpsClient(instance, project, apiKey);
-        
-        await azDevOpsClient.GetWorkItemAsync(int.Parse(value));
-    }
-
-    public static async Task GetCommitsAsync(string instance, string project, string repository, string apiKey)
-    {
-        var azDevOpsClient = new AzDevOpsClient(instance, project, apiKey);
-        
-        await azDevOpsClient.GetCommitsAsync(repository);
-    }
-
-    public static async Task GetChangesetsAsync(string instance, string project, string apiKey)
-    {
-        var azDevOpsClient = new AzDevOpsClient(instance, project, apiKey);
-        
-        await azDevOpsClient.GetChangesetsAsync();
-    }
-
     public override int Execute([NotNull] CommandContext context, [NotNull] Settings settings)
     {
-        // GetWorkItemAsync(settings.Instance, settings.Project, settings.ApiKey, settings.Value).Wait();
-        // GetCommitsAsync(settings.Instance, settings.Project, settings.Repository, settings.ApiKey).Wait();
-        GetChangesetsAsync(settings.Instance, settings.Project, settings.ApiKey).Wait();
+        _mediator?.Send(new CreateUserConfigsCommand
+        {
+            AzDevOpsParameters = new AzDevOpsParameters(settings.ApiKey, settings.Instance, settings.Project, settings.Repository)
+        });
 
         return 0;
     }

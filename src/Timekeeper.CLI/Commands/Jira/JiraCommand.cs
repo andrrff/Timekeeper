@@ -1,7 +1,7 @@
 using Spectre.Console.Cli;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using Timekeeper.Application.Common.Interfaces;
-using Microsoft.Extensions.DependencyInjection;
 using Timekeeper.Infrastructure.ExternalServices.Jira;
 
 namespace Timekeeper.CLI.Commands.Jira;
@@ -52,7 +52,7 @@ public sealed class JiraCommand : Command<JiraCommand.Settings>
         return await jiraClient.GetSearchAsync(value);
     }
 
-    public override int Execute(CommandContext context, Settings settings)
+    public override int Execute([NotNull] CommandContext context, [NotNull] Settings settings)
     {
         System.Console.WriteLine($"Welcome, {settings.UserName}");
         System.Console.WriteLine($"Result from Jira: {GetSearchAsync(settings.UserName, settings.ApiKey, settings.Instance, settings.Value).Result}");
